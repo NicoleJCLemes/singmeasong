@@ -43,4 +43,8 @@ describe("POST /recommendations", () => {
         const linkResponse = await supertest(app).post("/recommendations").send({...recommendation, youtubeLink: "https://tm.ibxk.com.br/2022/03/15/15161051389203.jpg?ims=1120x420"});
         expect(linkResponse.status).toEqual(422);
     });
-})
+});
+
+afterAll(async () => {
+    await prisma.$disconnect();
+});

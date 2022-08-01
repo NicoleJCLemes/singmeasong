@@ -168,17 +168,48 @@ describe("GET /recommendations/:id", () => {
     });
 });
 
-/*describe("GET /recommendations/random", () => {
+describe("GET /recommendations/random", () => {
     it("get random recommendations (200)", async () => {
-        
+        const tenRecommendations = [];
+        for(let i = 0; i < 10; i++) {
+            tenRecommendations.push(recommendationsFactory.createRecommendation());
+        };
+
+        await prisma.recommendation.createMany({
+            data: tenRecommendations
+        });
+
+        const response = await supertest(app).get("/recommendations/random");
+
+        expect(response.status).toEqual(200);
+        expect(response.body).toHaveProperty("name");
+    });
+
+    it("recommendations not found (404)", async () => {
+        const response = await supertest(app).get("/recommendations/random");
+        expect(response.status).toEqual(404);
     });
 });
 
 describe("GET /recommendations/top/:amount", () => {
     it("get 'amount' recommendations order by bigger score (200)", async () => {
-        
+        const tenRecommendations = [];
+        for(let i = 0; i < 10; i++) {
+            tenRecommendations.push({...recommendationsFactory.createRecommendation(), score: i+1});
+        };
+
+        await prisma.recommendation.createMany({
+            data: tenRecommendations
+        });
+
+        const amount = 5;
+        const response = await supertest(app).get(`/recommendations/top/${amount}`);
+
+        expect(response.status).toEqual(200);
+        expect(response.body.length).toBeLessThanOrEqual(5); 
+        expect(response.body[0].score).toBeGreaterThan(response.body[1].score);
     });
-});*/
+});
 
 afterAll(async () => {
     await prisma.$disconnect();

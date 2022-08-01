@@ -10,7 +10,26 @@ beforeEach(async () => {
     await prisma.$executeRaw`TRUNCATE TABLE recommendations`;
 });
 
+describe("GET /recommendations/:id", () => {
+    it("id not found", async () => {
+
+        jest.spyOn(recommendationRepository, "find").mockImplementationOnce(():any => {
+            return ""
+        });
+
+        const data = {
+            id: faker.datatype.number(),
+            name: faker.music.songName(),
+            youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
+            score: faker.datatype.number()
+        };
+
+        expect(recommendationService.getById(data.id)).rejects.toEqual({type: "not_found", message: ""});
+    });
+})
+
 describe("GET /recommendations", () => {
+    
     it("receive recommendations", async () => {
         const receivedRecommendations = [];
         for(let i = 0; i < 10; i++) {

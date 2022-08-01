@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.15% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/13</span>
+                <span class='fraction'>10/13</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.66% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/12</span>
+                <span class='fraction'>9/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -148,7 +148,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,28 +188,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,12 +209,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Prisma } from "@prisma/client";
 import { prisma } from "../database.js";
 import { CreateRecommendationData } from "../services/recommendationsService.js";
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >create(</span>createRecommendationData: CreateRecommendationData) {
-<span class="cstat-no" title="statement not covered" >  await prisma.recommendation.create({</span>
+async function create(createRecommendationData: CreateRecommendationData) {
+  await prisma.recommendation.create({
     data: createRecommendationData,
   });
 }
@@ -273,14 +273,14 @@ function find(id: number) {
   });
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >findByName(</span>name: string) {
-<span class="cstat-no" title="statement not covered" >  return prisma.recommendation.findUnique({</span>
+function findByName(name: string) {
+  return prisma.recommendation.findUnique({
     where: { name },
   });
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >updateScore(</span>id: number, operation: "increment" | "decrement") {
-<span class="cstat-no" title="statement not covered" >  return prisma.recommendation.update({</span>
+async function updateScore(id: number, operation: "increment" | "decrement") {
+  return prisma.recommendation.update({
     where: { id },
     data: {
       score: { [operation]: 1 },
@@ -288,8 +288,8 @@ async function <span class="fstat-no" title="function not covered" >updateScore(
   });
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >remove(</span>id: number) {
-<span class="cstat-no" title="statement not covered" >  await prisma.recommendation.delete({</span>
+async function remove(id: number) {
+  await prisma.recommendation.delete({
     where: { id },
   });
 }
@@ -310,7 +310,7 @@ export const recommendationRepository = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Aug 01 2022 04:20:34 GMT-0300 (Horário Padrão de Brasília)
+                at Mon Aug 01 2022 13:29:06 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -15,7 +15,7 @@ describe("POST /recommendations/:id/upvote", () => {
     it("id not found", async () => {
 
         jest.spyOn(recommendationRepository, "find").mockImplementationOnce(():any => {
-            return {}
+            return ""
         });
 
         const data = {
@@ -24,8 +24,6 @@ describe("POST /recommendations/:id/upvote", () => {
             youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
             score: faker.datatype.number()
         };
-
-        await recommendationService.getById(data.id);
 
         expect(recommendationService.getById(data.id)).rejects.toEqual({type: "not_found", message: ""});
     });

@@ -1,4 +1,4 @@
-import { CreateRecommendationData, recommendationService } from "../../src/services/recommendationsService.js";
+import { recommendationService } from "../../src/services/recommendationsService.js";
 import { jest } from "@jest/globals";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository.js";
 import { prisma } from "../../src/database.js";
@@ -12,28 +12,18 @@ beforeEach(async () => {
 
 describe("GET /recommendations", () => {
     it("receive recommendations", async () => {
+        const receivedRecommendations = [];
+        for(let i = 0; i < 10; i++) {
+            receivedRecommendations.push({
+                id: faker.datatype.number(),
+                name: faker.music.songName(),
+                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
+                score: faker.datatype.number()
+            });
+        };
+        
         jest.spyOn(recommendationRepository, "findAll").mockImplementationOnce(():any => {
-            return [{
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }]
+            return receivedRecommendations;
         });
 
         const recommendations = await recommendationService.get()
@@ -43,32 +33,23 @@ describe("GET /recommendations", () => {
 });
 
 describe("GET /recommendations/top/:amount", () => {
-    it("", async () => {
+    it("get top 'amount' recommendations", async () => {
+        const topRecommendations = [];
+        const amount = 4;
+        for(let i = 0; i < amount; i++) {
+            topRecommendations.push({
+                id: faker.datatype.number(),
+                name: faker.music.songName(),
+                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
+                score: faker.datatype.number()
+            });
+        };
+
         jest.spyOn(recommendationRepository, "getAmountByScore").mockImplementationOnce(():any => {
-            return [{
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }]
+            return topRecommendations;
         });
 
-        const recommendations = await recommendationService.getTop(4);
+        const recommendations = await recommendationService.getTop(amount);
 
         expect(recommendations.length).toEqual(4);
     });
@@ -85,22 +66,17 @@ describe("GET /recommendations/random", () => {
                 id: faker.datatype.number(),
                 name: faker.music.songName(),
                 youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
+                score: faker.datatype.number({min: 11})
             }, {
                 id: faker.datatype.number(),
                 name: faker.music.songName(),
                 youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
+                score: faker.datatype.number({min: 11})
             }, {
                 id: faker.datatype.number(),
                 name: faker.music.songName(),
                 youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
-            }, {
-                id: faker.datatype.number(),
-                name: faker.music.songName(),
-                youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
+                score: faker.datatype.number({min: 11})
             }]
         });
 
@@ -118,12 +94,12 @@ describe("GET /recommendations/random", () => {
                 id: faker.datatype.number(),
                 name: faker.music.songName(),
                 youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
+                score: faker.datatype.number({max: 10})
             }, {
                 id: faker.datatype.number(),
                 name: faker.music.songName(),
                 youtubeLink: `www.youtube.com/watch?v=${faker.random.alphaNumeric(10)}`,
-                score: faker.datatype.number()
+                score: faker.datatype.number({max: 10})
             }]
         });
 
@@ -131,9 +107,13 @@ describe("GET /recommendations/random", () => {
         expect(recommendation).toHaveProperty("name");
     });
 
-    it("recommendation not found", async () => {
+    it("recommendations not found", async () => {
         jest.spyOn(Math, "random").mockImplementationOnce(():any => {
             return 0.7
+        });
+
+        jest.spyOn(recommendationRepository, "findAll").mockImplementationOnce(():any => {
+            return []
         });
 
         jest.spyOn(recommendationRepository, "findAll").mockImplementationOnce(():any => {

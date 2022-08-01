@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1659379088238" clover="3.2.0">
-  <project timestamp="1659379088239" name="All files">
+<coverage generated="1659379712322" clover="3.2.0">
+  <project timestamp="1659379712322" name="All files">
     <metrics statements="100" coveredstatements="97" conditionals="29" coveredconditionals="21" methods="33" coveredmethods="32" elements="162" coveredelements="150" complexity="0" loc="100" ncloc="100" packages="9" files="10" classes="10"/>
     <package name="src">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -40,8 +40,8 @@
         <line num="45" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
       </file>
@@ -50,9 +50,9 @@
       <metrics statements="4" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="errorHandlerMiddleware.ts" path="/home/nicole/Documentos/Programação/Driven/Projetos/testes/projeto21-singmeasong/back-end/src/middlewares/errorHandlerMiddleware.ts">
         <metrics statements="4" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="14" count="5" type="stmt"/>
-        <line num="16" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="5" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="16" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="6" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
       </file>
     </package>
@@ -61,13 +61,13 @@
       <file name="recommendationRepository.ts" path="/home/nicole/Documentos/Programação/Driven/Projetos/testes/projeto21-singmeasong/back-end/src/repositories/recommendationRepository.ts">
         <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="8" coveredmethods="8"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="17" count="5" type="stmt"/>
-        <line num="19" count="5" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="36" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="4" type="cond" truecount="1" falsecount="0"/>
         <line num="38" count="2" type="stmt"/>
         <line num="40" count="2" type="stmt"/>
-        <line num="46" count="5" type="stmt"/>
+        <line num="46" count="6" type="stmt"/>
         <line num="52" count="2" type="stmt"/>
         <line num="58" count="3" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
@@ -110,8 +110,8 @@
         <line num="26" count="3" type="stmt"/>
         <line num="31" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="32" count="2" type="stmt"/>
-        <line num="37" count="8" type="stmt"/>
-        <line num="38" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="9" type="stmt"/>
+        <line num="38" count="9" type="cond" truecount="1" falsecount="0"/>
         <line num="40" count="6" type="stmt"/>
         <line num="44" count="2" type="stmt"/>
         <line num="48" count="2" type="stmt"/>
@@ -124,11 +124,11 @@
         <line num="61" count="3" type="stmt"/>
         <line num="65" count="5" type="stmt"/>
         <line num="70" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="71" count="2" type="stmt"/>
-        <line num="74" count="3" type="stmt"/>
+        <line num="71" count="3" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
         <line num="78" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="79" count="3" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="82" count="3" type="stmt"/>
         <line num="85" count="4" type="stmt"/>
       </file>
     </package>
@@ -136,14 +136,14 @@
       <metrics statements="10" coveredstatements="8" conditionals="20" coveredconditionals="12" methods="6" coveredmethods="5"/>
       <file name="errorUtils.ts" path="/home/nicole/Documentos/Programação/Driven/Projetos/testes/projeto21-singmeasong/back-end/src/utils/errorUtils.ts">
         <metrics statements="10" coveredstatements="8" conditionals="20" coveredconditionals="12" methods="6" coveredmethods="5"/>
-        <line num="8" count="5" type="stmt"/>
-        <line num="12" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="13" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="5" type="cond" truecount="1" falsecount="0"/>
         <line num="14" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="15" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="16" count="0" type="stmt"/>
         <line num="20" count="2" type="cond" truecount="3" falsecount="1"/>
-        <line num="24" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="24" count="5" type="cond" truecount="3" falsecount="1"/>
         <line num="28" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="32" count="2" type="cond" truecount="3" falsecount="1"/>
       </file>

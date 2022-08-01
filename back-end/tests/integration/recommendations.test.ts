@@ -2,6 +2,7 @@ import app from "../../src/app.js";
 import supertest from "supertest";
 import recommendationsFactory from "./factories/recommendationsFactory.js";
 import { prisma } from "../../src/database.js";
+import { faker } from "@faker-js/faker";
 
 beforeEach(async () => {
     await prisma.$executeRaw`TRUNCATE TABLE recommendations`;
@@ -165,6 +166,12 @@ describe("GET /recommendations/:id", () => {
 
         expect(response.status).toEqual(200);
         expect(response.body).toHaveProperty("name");
+    });
+
+    it("recommendation id not found (404)", async () => {
+        const id = faker.datatype.number({max: 10});
+        const response = await supertest(app).get(`/recommendations/${id}`);
+        expect(response.status).toEqual(404);
     });
 });
 

@@ -14,10 +14,10 @@ describe("create recommendation suit test", () => {
         cy.get('input[placeholder="Name"]').type(recommendation.name);
         cy.get('input[placeholder="https://youtu.be/..."]').type(recommendation.youtubeLink);
 
-        cy.intercept("POST", "http://localhost:5000/").as("createRecommendation");
+        cy.intercept("POST", "http://localhost:5000/recommendations").as("createRecommendation");
         cy.get('#create').click();
         cy.wait("@createRecommendation");
         
         cy.contains(recommendation.name).should("be.visible");
-    })
-})
+    });
+});
